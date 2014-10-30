@@ -1,0 +1,8 @@
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.exe.config
+D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.csprojResolveAssemblyReference.cache
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.exe
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.pdb
+D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.exe
+D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.pdb
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.BL.exe
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.BL.pdb

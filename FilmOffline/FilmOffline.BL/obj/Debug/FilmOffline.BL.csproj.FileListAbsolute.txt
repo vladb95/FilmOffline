@@ -1,0 +1,6 @@
+D:\projects\FilmOffline\FilmOffline.BL\bin\Debug\FilmOffline.BL.exe.config
+D:\projects\FilmOffline\FilmOffline.BL\obj\Debug\FilmOffline.BL.csprojResolveAssemblyReference.cache
+D:\projects\FilmOffline\FilmOffline.BL\bin\Debug\FilmOffline.BL.exe
+D:\projects\FilmOffline\FilmOffline.BL\bin\Debug\FilmOffline.BL.pdb
+D:\projects\FilmOffline\FilmOffline.BL\obj\Debug\FilmOffline.BL.exe
+D:\projects\FilmOffline\FilmOffline.BL\obj\Debug\FilmOffline.BL.pdb

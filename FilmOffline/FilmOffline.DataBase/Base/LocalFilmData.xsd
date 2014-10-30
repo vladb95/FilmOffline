@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LocalFilmData" targetNamespace="http://tempuri.org/LocalFilmData.xsd" xmlns:mstns="http://tempuri.org/LocalFilmData.xsd" xmlns="http://tempuri.org/LocalFilmData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="LocalFilmData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="LocalFilmData" msprop:Generator_UserDSName="LocalFilmData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Film" msprop:Generator_TableClassName="FilmDataTable" msprop:Generator_TableVarName="tableFilm" msprop:Generator_RowChangedName="FilmRowChanged" msprop:Generator_TablePropName="Film" msprop:Generator_RowDeletingName="FilmRowDeleting" msprop:Generator_RowChangingName="FilmRowChanging" msprop:Generator_RowEvHandlerName="FilmRowChangeEventHandler" msprop:Generator_RowDeletedName="FilmRowDeleted" msprop:Generator_RowClassName="FilmRow" msprop:Generator_UserTableName="Film" msprop:Generator_RowEvArgName="FilmRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="FilmName" msprop:Generator_ColumnVarNameInTable="columnFilmName" msprop:Generator_ColumnPropNameInRow="FilmName" msprop:Generator_ColumnPropNameInTable="FilmNameColumn" msprop:Generator_UserColumnName="FilmName" type="xs:string" minOccurs="0" />
+              <xs:element name="Categ_id" msprop:Generator_ColumnVarNameInTable="columnCateg_id" msprop:Generator_ColumnPropNameInRow="Categ_id" msprop:Generator_ColumnPropNameInTable="Categ_idColumn" msprop:Generator_UserColumnName="Categ_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Year" msprop:Generator_ColumnVarNameInTable="columnYear" msprop:Generator_ColumnPropNameInRow="Year" msprop:Generator_ColumnPropNameInTable="YearColumn" msprop:Generator_UserColumnName="Year" type="xs:int" minOccurs="0" />
+              <xs:element name="Director_id" msprop:Generator_ColumnVarNameInTable="columnDirector_id" msprop:Generator_ColumnPropNameInRow="Director_id" msprop:Generator_ColumnPropNameInTable="Director_idColumn" msprop:Generator_UserColumnName="Director_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Country_id" msprop:Generator_ColumnVarNameInTable="columnCountry_id" msprop:Generator_ColumnPropNameInRow="Country_id" msprop:Generator_ColumnPropNameInTable="Country_idColumn" msprop:Generator_UserColumnName="Country_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Poster" msprop:Generator_ColumnVarNameInTable="columnPoster" msprop:Generator_ColumnPropNameInRow="Poster" msprop:Generator_ColumnPropNameInTable="PosterColumn" msprop:Generator_UserColumnName="Poster" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CodeFilm" msprop:Generator_ColumnVarNameInTable="columnCodeFilm" msprop:Generator_ColumnPropNameInRow="CodeFilm" msprop:Generator_ColumnPropNameInTable="CodeFilmColumn" msprop:Generator_UserColumnName="CodeFilm" type="xs:string" minOccurs="0" />
+              <xs:element name="Rate_id" msprop:Generator_ColumnVarNameInTable="columnRate_id" msprop:Generator_ColumnPropNameInRow="Rate_id" msprop:Generator_ColumnPropNameInTable="Rate_idColumn" msprop:Generator_UserColumnName="Rate_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Quality_id" msprop:Generator_ColumnVarNameInTable="columnQuality_id" msprop:Generator_ColumnPropNameInRow="Quality_id" msprop:Generator_ColumnPropNameInTable="Quality_idColumn" msprop:Generator_UserColumnName="Quality_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Note" msprop:Generator_ColumnVarNameInTable="columnNote" msprop:Generator_ColumnPropNameInRow="Note" msprop:Generator_ColumnPropNameInTable="NoteColumn" msprop:Generator_UserColumnName="Note" type="xs:string" minOccurs="0" />
+              <xs:element name="Duration" msprop:Generator_ColumnVarNameInTable="columnDuration" msprop:Generator_ColumnPropNameInRow="Duration" msprop:Generator_ColumnPropNameInTable="DurationColumn" msprop:Generator_UserColumnName="Duration" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Log" msprop:Generator_TableClassName="LogDataTable" msprop:Generator_TableVarName="tableLog" msprop:Generator_RowChangedName="LogRowChanged" msprop:Generator_TablePropName="Log" msprop:Generator_RowDeletingName="LogRowDeleting" msprop:Generator_RowChangingName="LogRowChanging" msprop:Generator_RowEvHandlerName="LogRowChangeEventHandler" msprop:Generator_RowDeletedName="LogRowDeleted" msprop:Generator_RowClassName="LogRow" msprop:Generator_UserTableName="Log" msprop:Generator_RowEvArgName="LogRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Event" msprop:Generator_ColumnVarNameInTable="columnEvent" msprop:Generator_ColumnPropNameInRow="Event" msprop:Generator_ColumnPropNameInTable="EventColumn" msprop:Generator_UserColumnName="Event" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Category" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_TablePropName="Category" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_UserTableName="Category" msprop:Generator_RowEvArgName="CategoryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_UserColumnName="CategoryName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Director" msprop:Generator_TableClassName="DirectorDataTable" msprop:Generator_TableVarName="tableDirector" msprop:Generator_RowChangedName="DirectorRowChanged" msprop:Generator_TablePropName="Director" msprop:Generator_RowDeletingName="DirectorRowDeleting" msprop:Generator_RowChangingName="DirectorRowChanging" msprop:Generator_RowEvHandlerName="DirectorRowChangeEventHandler" msprop:Generator_RowDeletedName="DirectorRowDeleted" msprop:Generator_RowClassName="DirectorRow" msprop:Generator_UserTableName="Director" msprop:Generator_RowEvArgName="DirectorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="DirectorName" msprop:Generator_ColumnVarNameInTable="columnDirectorName" msprop:Generator_ColumnPropNameInRow="DirectorName" msprop:Generator_ColumnPropNameInTable="DirectorNameColumn" msprop:Generator_UserColumnName="DirectorName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Country" msprop:Generator_TableClassName="CountryDataTable" msprop:Generator_TableVarName="tableCountry" msprop:Generator_RowChangedName="CountryRowChanged" msprop:Generator_TablePropName="Country" msprop:Generator_RowDeletingName="CountryRowDeleting" msprop:Generator_RowChangingName="CountryRowChanging" msprop:Generator_RowEvHandlerName="CountryRowChangeEventHandler" msprop:Generator_RowDeletedName="CountryRowDeleted" msprop:Generator_RowClassName="CountryRow" msprop:Generator_UserTableName="Country" msprop:Generator_RowEvArgName="CountryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="CountryName" msprop:Generator_ColumnVarNameInTable="columnCountryName" msprop:Generator_ColumnPropNameInRow="CountryName" msprop:Generator_ColumnPropNameInTable="CountryNameColumn" msprop:Generator_UserColumnName="CountryName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rate" msprop:Generator_TableClassName="RateDataTable" msprop:Generator_TableVarName="tableRate" msprop:Generator_RowChangedName="RateRowChanged" msprop:Generator_TablePropName="Rate" msprop:Generator_RowDeletingName="RateRowDeleting" msprop:Generator_RowChangingName="RateRowChanging" msprop:Generator_RowEvHandlerName="RateRowChangeEventHandler" msprop:Generator_RowDeletedName="RateRowDeleted" msprop:Generator_RowClassName="RateRow" msprop:Generator_UserTableName="Rate" msprop:Generator_RowEvArgName="RateRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Groups" msprop:Generator_TableClassName="GroupsDataTable" msprop:Generator_TableVarName="tableGroups" msprop:Generator_RowChangedName="GroupsRowChanged" msprop:Generator_TablePropName="Groups" msprop:Generator_RowDeletingName="GroupsRowDeleting" msprop:Generator_RowChangingName="GroupsRowChanging" msprop:Generator_RowEvHandlerName="GroupsRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupsRowDeleted" msprop:Generator_RowClassName="GroupsRow" msprop:Generator_UserTableName="Groups" msprop:Generator_RowEvArgName="GroupsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Film_id" msprop:Generator_ColumnVarNameInTable="columnFilm_id" msprop:Generator_ColumnPropNameInRow="Film_id" msprop:Generator_ColumnPropNameInTable="Film_idColumn" msprop:Generator_UserColumnName="Film_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Actor_id" msprop:Generator_ColumnVarNameInTable="columnActor_id" msprop:Generator_ColumnPropNameInRow="Actor_id" msprop:Generator_ColumnPropNameInTable="Actor_idColumn" msprop:Generator_UserColumnName="Actor_id" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Actor" msprop:Generator_TableClassName="ActorDataTable" msprop:Generator_TableVarName="tableActor" msprop:Generator_RowChangedName="ActorRowChanged" msprop:Generator_TablePropName="Actor" msprop:Generator_RowDeletingName="ActorRowDeleting" msprop:Generator_RowChangingName="ActorRowChanging" msprop:Generator_RowEvHandlerName="ActorRowChangeEventHandler" msprop:Generator_RowDeletedName="ActorRowDeleted" msprop:Generator_RowClassName="ActorRow" msprop:Generator_UserTableName="Actor" msprop:Generator_RowEvArgName="ActorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="ActorName" msprop:Generator_ColumnVarNameInTable="columnActorName" msprop:Generator_ColumnPropNameInRow="ActorName" msprop:Generator_ColumnPropNameInTable="ActorNameColumn" msprop:Generator_UserColumnName="ActorName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Quality" msprop:Generator_TableClassName="QualityDataTable" msprop:Generator_TableVarName="tableQuality" msprop:Generator_RowChangedName="QualityRowChanged" msprop:Generator_TablePropName="Quality" msprop:Generator_RowDeletingName="QualityRowDeleting" msprop:Generator_RowChangingName="QualityRowChanging" msprop:Generator_RowEvHandlerName="QualityRowChangeEventHandler" msprop:Generator_RowDeletedName="QualityRowDeleted" msprop:Generator_RowClassName="QualityRow" msprop:Generator_UserTableName="Quality" msprop:Generator_RowEvArgName="QualityRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Film" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Log_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Log" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Category_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Category" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Director_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Director" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Country_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Country" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Rate_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Rate" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Actor_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Actor" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Quality_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Quality" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Actor_Groups" msdata:parent="Actor" msdata:child="Groups" msdata:parentkey="id" msdata:childkey="Actor_id" msprop:Generator_UserChildTable="Groups" msprop:Generator_ChildPropName="GetGroupsRows" msprop:Generator_UserRelationName="Actor_Groups" msprop:Generator_ParentPropName="ActorRow" msprop:Generator_RelationVarName="relationActor_Groups" msprop:Generator_UserParentTable="Actor" />
+      <msdata:Relationship name="Film_Groups" msdata:parent="Film" msdata:child="Groups" msdata:parentkey="id" msdata:childkey="Film_id" msprop:Generator_UserChildTable="Groups" msprop:Generator_ChildPropName="GetGroupsRows" msprop:Generator_UserRelationName="Film_Groups" msprop:Generator_RelationVarName="relationFilm_Groups" msprop:Generator_UserParentTable="Film" msprop:Generator_ParentPropName="FilmRow" />
+      <msdata:Relationship name="Category_Film" msdata:parent="Category" msdata:child="Film" msdata:parentkey="id" msdata:childkey="Categ_id" msprop:Generator_UserChildTable="Film" msprop:Generator_ChildPropName="GetFilmRows" msprop:Generator_UserRelationName="Category_Film" msprop:Generator_ParentPropName="CategoryRow" msprop:Generator_RelationVarName="relationCategory_Film" msprop:Generator_UserParentTable="Category" />
+      <msdata:Relationship name="Director_Film" msdata:parent="Director" msdata:child="Film" msdata:parentkey="id" msdata:childkey="Director_id" msprop:Generator_UserChildTable="Film" msprop:Generator_ChildPropName="GetFilmRows" msprop:Generator_UserRelationName="Director_Film" msprop:Generator_ParentPropName="DirectorRow" msprop:Generator_RelationVarName="relationDirector_Film" msprop:Generator_UserParentTable="Director" />
+      <msdata:Relationship name="Country_Film" msdata:parent="Country" msdata:child="Film" msdata:parentkey="id" msdata:childkey="Country_id" msprop:Generator_UserChildTable="Film" msprop:Generator_ChildPropName="GetFilmRows" msprop:Generator_UserRelationName="Country_Film" msprop:Generator_ParentPropName="CountryRow" msprop:Generator_RelationVarName="relationCountry_Film" msprop:Generator_UserParentTable="Country" />
+      <msdata:Relationship name="Rate_Film" msdata:parent="Rate" msdata:child="Film" msdata:parentkey="id" msdata:childkey="Rate_id" msprop:Generator_UserChildTable="Film" msprop:Generator_ChildPropName="GetFilmRows" msprop:Generator_UserRelationName="Rate_Film" msprop:Generator_ParentPropName="RateRow" msprop:Generator_RelationVarName="relationRate_Film" msprop:Generator_UserParentTable="Rate" />
+      <msdata:Relationship name="Quality_Film" msdata:parent="Quality" msdata:child="Film" msdata:parentkey="id" msdata:childkey="Quality_id" msprop:Generator_UserChildTable="Film" msprop:Generator_ChildPropName="GetFilmRows" msprop:Generator_UserRelationName="Quality_Film" msprop:Generator_ParentPropName="QualityRow" msprop:Generator_RelationVarName="relationQuality_Film" msprop:Generator_UserParentTable="Quality" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
