@@ -44,8 +44,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brain\Parser\CatParser.cs" />
-    <Compile Include="Brain\Parser\ConParser.cs" />
+    <Compile Include="Brain\Parser\ConcreteParser.cs" />
+    <Compile Include="Brain\Parser\FullParser.cs" />
     <Compile Include="Brain\Starter.cs" />
     <Compile Include="Brain\UserRequest.cs" />
     <Compile Include="Config\Request.cs" />
