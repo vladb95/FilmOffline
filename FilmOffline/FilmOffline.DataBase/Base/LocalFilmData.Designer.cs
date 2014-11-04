@@ -24,11 +24,11 @@ namespace FilmOffline.DataBase.Base {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class LocalFilmData : global::System.Data.DataSet {
         
-        private FilmDataTable tableFilm;
+        private FilmsDataTable tableFilms;
         
         private LogDataTable tableLog;
         
-        private CategoryDataTable tableCategory;
+        private CategoriesDataTable tableCategories;
         
         private DirectorDataTable tableDirector;
         
@@ -36,17 +36,17 @@ namespace FilmOffline.DataBase.Base {
         
         private RateDataTable tableRate;
         
-        private GroupsDataTable tableGroups;
+        private ActorsGroupDataTable tableActorsGroup;
         
-        private ActorDataTable tableActor;
+        private ActorsDataTable tableActors;
         
         private QualityDataTable tableQuality;
+        
+        private CategoryGroupDataTable tableCategoryGroup;
         
         private global::System.Data.DataRelation relationActor_Groups;
         
         private global::System.Data.DataRelation relationFilm_Groups;
-        
-        private global::System.Data.DataRelation relationCategory_Film;
         
         private global::System.Data.DataRelation relationDirector_Film;
         
@@ -55,6 +55,10 @@ namespace FilmOffline.DataBase.Base {
         private global::System.Data.DataRelation relationRate_Film;
         
         private global::System.Data.DataRelation relationQuality_Film;
+        
+        private global::System.Data.DataRelation relationCategories_CategoryGroup;
+        
+        private global::System.Data.DataRelation relationCategoryGroup_Film;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -84,14 +88,14 @@ namespace FilmOffline.DataBase.Base {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Film"] != null)) {
-                    base.Tables.Add(new FilmDataTable(ds.Tables["Film"]));
+                if ((ds.Tables["Films"] != null)) {
+                    base.Tables.Add(new FilmsDataTable(ds.Tables["Films"]));
                 }
                 if ((ds.Tables["Log"] != null)) {
                     base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
                 }
-                if ((ds.Tables["Category"] != null)) {
-                    base.Tables.Add(new CategoryDataTable(ds.Tables["Category"]));
+                if ((ds.Tables["Categories"] != null)) {
+                    base.Tables.Add(new CategoriesDataTable(ds.Tables["Categories"]));
                 }
                 if ((ds.Tables["Director"] != null)) {
                     base.Tables.Add(new DirectorDataTable(ds.Tables["Director"]));
@@ -102,14 +106,17 @@ namespace FilmOffline.DataBase.Base {
                 if ((ds.Tables["Rate"] != null)) {
                     base.Tables.Add(new RateDataTable(ds.Tables["Rate"]));
                 }
-                if ((ds.Tables["Groups"] != null)) {
-                    base.Tables.Add(new GroupsDataTable(ds.Tables["Groups"]));
+                if ((ds.Tables["ActorsGroup"] != null)) {
+                    base.Tables.Add(new ActorsGroupDataTable(ds.Tables["ActorsGroup"]));
                 }
-                if ((ds.Tables["Actor"] != null)) {
-                    base.Tables.Add(new ActorDataTable(ds.Tables["Actor"]));
+                if ((ds.Tables["Actors"] != null)) {
+                    base.Tables.Add(new ActorsDataTable(ds.Tables["Actors"]));
                 }
                 if ((ds.Tables["Quality"] != null)) {
                     base.Tables.Add(new QualityDataTable(ds.Tables["Quality"]));
+                }
+                if ((ds.Tables["CategoryGroup"] != null)) {
+                    base.Tables.Add(new CategoryGroupDataTable(ds.Tables["CategoryGroup"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -133,9 +140,9 @@ namespace FilmOffline.DataBase.Base {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public FilmDataTable Film {
+        public FilmsDataTable Films {
             get {
-                return this.tableFilm;
+                return this.tableFilms;
             }
         }
         
@@ -153,9 +160,9 @@ namespace FilmOffline.DataBase.Base {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CategoryDataTable Category {
+        public CategoriesDataTable Categories {
             get {
-                return this.tableCategory;
+                return this.tableCategories;
             }
         }
         
@@ -193,9 +200,9 @@ namespace FilmOffline.DataBase.Base {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GroupsDataTable Groups {
+        public ActorsGroupDataTable ActorsGroup {
             get {
-                return this.tableGroups;
+                return this.tableActorsGroup;
             }
         }
         
@@ -203,9 +210,9 @@ namespace FilmOffline.DataBase.Base {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ActorDataTable Actor {
+        public ActorsDataTable Actors {
             get {
-                return this.tableActor;
+                return this.tableActors;
             }
         }
         
@@ -216,6 +223,16 @@ namespace FilmOffline.DataBase.Base {
         public QualityDataTable Quality {
             get {
                 return this.tableQuality;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CategoryGroupDataTable CategoryGroup {
+            get {
+                return this.tableCategoryGroup;
             }
         }
         
@@ -286,14 +303,14 @@ namespace FilmOffline.DataBase.Base {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Film"] != null)) {
-                    base.Tables.Add(new FilmDataTable(ds.Tables["Film"]));
+                if ((ds.Tables["Films"] != null)) {
+                    base.Tables.Add(new FilmsDataTable(ds.Tables["Films"]));
                 }
                 if ((ds.Tables["Log"] != null)) {
                     base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
                 }
-                if ((ds.Tables["Category"] != null)) {
-                    base.Tables.Add(new CategoryDataTable(ds.Tables["Category"]));
+                if ((ds.Tables["Categories"] != null)) {
+                    base.Tables.Add(new CategoriesDataTable(ds.Tables["Categories"]));
                 }
                 if ((ds.Tables["Director"] != null)) {
                     base.Tables.Add(new DirectorDataTable(ds.Tables["Director"]));
@@ -304,14 +321,17 @@ namespace FilmOffline.DataBase.Base {
                 if ((ds.Tables["Rate"] != null)) {
                     base.Tables.Add(new RateDataTable(ds.Tables["Rate"]));
                 }
-                if ((ds.Tables["Groups"] != null)) {
-                    base.Tables.Add(new GroupsDataTable(ds.Tables["Groups"]));
+                if ((ds.Tables["ActorsGroup"] != null)) {
+                    base.Tables.Add(new ActorsGroupDataTable(ds.Tables["ActorsGroup"]));
                 }
-                if ((ds.Tables["Actor"] != null)) {
-                    base.Tables.Add(new ActorDataTable(ds.Tables["Actor"]));
+                if ((ds.Tables["Actors"] != null)) {
+                    base.Tables.Add(new ActorsDataTable(ds.Tables["Actors"]));
                 }
                 if ((ds.Tables["Quality"] != null)) {
                     base.Tables.Add(new QualityDataTable(ds.Tables["Quality"]));
+                }
+                if ((ds.Tables["CategoryGroup"] != null)) {
+                    base.Tables.Add(new CategoryGroupDataTable(ds.Tables["CategoryGroup"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -346,10 +366,10 @@ namespace FilmOffline.DataBase.Base {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableFilm = ((FilmDataTable)(base.Tables["Film"]));
+            this.tableFilms = ((FilmsDataTable)(base.Tables["Films"]));
             if ((initTable == true)) {
-                if ((this.tableFilm != null)) {
-                    this.tableFilm.InitVars();
+                if ((this.tableFilms != null)) {
+                    this.tableFilms.InitVars();
                 }
             }
             this.tableLog = ((LogDataTable)(base.Tables["Log"]));
@@ -358,10 +378,10 @@ namespace FilmOffline.DataBase.Base {
                     this.tableLog.InitVars();
                 }
             }
-            this.tableCategory = ((CategoryDataTable)(base.Tables["Category"]));
+            this.tableCategories = ((CategoriesDataTable)(base.Tables["Categories"]));
             if ((initTable == true)) {
-                if ((this.tableCategory != null)) {
-                    this.tableCategory.InitVars();
+                if ((this.tableCategories != null)) {
+                    this.tableCategories.InitVars();
                 }
             }
             this.tableDirector = ((DirectorDataTable)(base.Tables["Director"]));
@@ -382,16 +402,16 @@ namespace FilmOffline.DataBase.Base {
                     this.tableRate.InitVars();
                 }
             }
-            this.tableGroups = ((GroupsDataTable)(base.Tables["Groups"]));
+            this.tableActorsGroup = ((ActorsGroupDataTable)(base.Tables["ActorsGroup"]));
             if ((initTable == true)) {
-                if ((this.tableGroups != null)) {
-                    this.tableGroups.InitVars();
+                if ((this.tableActorsGroup != null)) {
+                    this.tableActorsGroup.InitVars();
                 }
             }
-            this.tableActor = ((ActorDataTable)(base.Tables["Actor"]));
+            this.tableActors = ((ActorsDataTable)(base.Tables["Actors"]));
             if ((initTable == true)) {
-                if ((this.tableActor != null)) {
-                    this.tableActor.InitVars();
+                if ((this.tableActors != null)) {
+                    this.tableActors.InitVars();
                 }
             }
             this.tableQuality = ((QualityDataTable)(base.Tables["Quality"]));
@@ -400,13 +420,20 @@ namespace FilmOffline.DataBase.Base {
                     this.tableQuality.InitVars();
                 }
             }
+            this.tableCategoryGroup = ((CategoryGroupDataTable)(base.Tables["CategoryGroup"]));
+            if ((initTable == true)) {
+                if ((this.tableCategoryGroup != null)) {
+                    this.tableCategoryGroup.InitVars();
+                }
+            }
             this.relationActor_Groups = this.Relations["Actor_Groups"];
             this.relationFilm_Groups = this.Relations["Film_Groups"];
-            this.relationCategory_Film = this.Relations["Category_Film"];
             this.relationDirector_Film = this.Relations["Director_Film"];
             this.relationCountry_Film = this.Relations["Country_Film"];
             this.relationRate_Film = this.Relations["Rate_Film"];
             this.relationQuality_Film = this.Relations["Quality_Film"];
+            this.relationCategories_CategoryGroup = this.Relations["Categories_CategoryGroup"];
+            this.relationCategoryGroup_Film = this.Relations["CategoryGroup_Film"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -417,57 +444,63 @@ namespace FilmOffline.DataBase.Base {
             this.Namespace = "http://tempuri.org/LocalFilmData.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableFilm = new FilmDataTable();
-            base.Tables.Add(this.tableFilm);
+            this.tableFilms = new FilmsDataTable();
+            base.Tables.Add(this.tableFilms);
             this.tableLog = new LogDataTable();
             base.Tables.Add(this.tableLog);
-            this.tableCategory = new CategoryDataTable();
-            base.Tables.Add(this.tableCategory);
+            this.tableCategories = new CategoriesDataTable();
+            base.Tables.Add(this.tableCategories);
             this.tableDirector = new DirectorDataTable();
             base.Tables.Add(this.tableDirector);
             this.tableCountry = new CountryDataTable();
             base.Tables.Add(this.tableCountry);
             this.tableRate = new RateDataTable();
             base.Tables.Add(this.tableRate);
-            this.tableGroups = new GroupsDataTable();
-            base.Tables.Add(this.tableGroups);
-            this.tableActor = new ActorDataTable();
-            base.Tables.Add(this.tableActor);
+            this.tableActorsGroup = new ActorsGroupDataTable();
+            base.Tables.Add(this.tableActorsGroup);
+            this.tableActors = new ActorsDataTable();
+            base.Tables.Add(this.tableActors);
             this.tableQuality = new QualityDataTable();
             base.Tables.Add(this.tableQuality);
+            this.tableCategoryGroup = new CategoryGroupDataTable();
+            base.Tables.Add(this.tableCategoryGroup);
             this.relationActor_Groups = new global::System.Data.DataRelation("Actor_Groups", new global::System.Data.DataColumn[] {
-                        this.tableActor.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableGroups.Actor_idColumn}, false);
+                        this.tableActors.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableActorsGroup.Actor_idColumn}, false);
             this.Relations.Add(this.relationActor_Groups);
             this.relationFilm_Groups = new global::System.Data.DataRelation("Film_Groups", new global::System.Data.DataColumn[] {
-                        this.tableFilm.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableGroups.Film_idColumn}, false);
+                        this.tableFilms.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableActorsGroup.Films_idColumn}, false);
             this.Relations.Add(this.relationFilm_Groups);
-            this.relationCategory_Film = new global::System.Data.DataRelation("Category_Film", new global::System.Data.DataColumn[] {
-                        this.tableCategory.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFilm.Categ_idColumn}, false);
-            this.Relations.Add(this.relationCategory_Film);
             this.relationDirector_Film = new global::System.Data.DataRelation("Director_Film", new global::System.Data.DataColumn[] {
                         this.tableDirector.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFilm.Director_idColumn}, false);
+                        this.tableFilms.Director_idColumn}, false);
             this.Relations.Add(this.relationDirector_Film);
             this.relationCountry_Film = new global::System.Data.DataRelation("Country_Film", new global::System.Data.DataColumn[] {
                         this.tableCountry.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFilm.Country_idColumn}, false);
+                        this.tableFilms.Country_idColumn}, false);
             this.Relations.Add(this.relationCountry_Film);
             this.relationRate_Film = new global::System.Data.DataRelation("Rate_Film", new global::System.Data.DataColumn[] {
                         this.tableRate.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFilm.Rate_idColumn}, false);
+                        this.tableFilms.Rate_idColumn}, false);
             this.Relations.Add(this.relationRate_Film);
             this.relationQuality_Film = new global::System.Data.DataRelation("Quality_Film", new global::System.Data.DataColumn[] {
                         this.tableQuality.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFilm.Quality_idColumn}, false);
+                        this.tableFilms.Quality_idColumn}, false);
             this.Relations.Add(this.relationQuality_Film);
+            this.relationCategories_CategoryGroup = new global::System.Data.DataRelation("Categories_CategoryGroup", new global::System.Data.DataColumn[] {
+                        this.tableCategories.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCategoryGroup.Category_idColumn}, false);
+            this.Relations.Add(this.relationCategories_CategoryGroup);
+            this.relationCategoryGroup_Film = new global::System.Data.DataRelation("CategoryGroup_Film", new global::System.Data.DataColumn[] {
+                        this.tableCategoryGroup.Film_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFilms.idColumn}, false);
+            this.Relations.Add(this.relationCategoryGroup_Film);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeFilm() {
+        private bool ShouldSerializeFilms() {
             return false;
         }
         
@@ -479,7 +512,7 @@ namespace FilmOffline.DataBase.Base {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeCategory() {
+        private bool ShouldSerializeCategories() {
             return false;
         }
         
@@ -503,19 +536,25 @@ namespace FilmOffline.DataBase.Base {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGroups() {
+        private bool ShouldSerializeActorsGroup() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeActor() {
+        private bool ShouldSerializeActors() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeQuality() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeCategoryGroup() {
             return false;
         }
         
@@ -575,13 +614,13 @@ namespace FilmOffline.DataBase.Base {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void FilmRowChangeEventHandler(object sender, FilmRowChangeEvent e);
+        public delegate void FilmsRowChangeEventHandler(object sender, FilmsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void LogRowChangeEventHandler(object sender, LogRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void CategoryRowChangeEventHandler(object sender, CategoryRowChangeEvent e);
+        public delegate void CategoriesRowChangeEventHandler(object sender, CategoriesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DirectorRowChangeEventHandler(object sender, DirectorRowChangeEvent e);
@@ -593,20 +632,23 @@ namespace FilmOffline.DataBase.Base {
         public delegate void RateRowChangeEventHandler(object sender, RateRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void GroupsRowChangeEventHandler(object sender, GroupsRowChangeEvent e);
+        public delegate void ActorsGroupRowChangeEventHandler(object sender, ActorsGroupRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ActorRowChangeEventHandler(object sender, ActorRowChangeEvent e);
+        public delegate void ActorsRowChangeEventHandler(object sender, ActorsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void QualityRowChangeEventHandler(object sender, QualityRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void CategoryGroupRowChangeEventHandler(object sender, CategoryGroupRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class FilmDataTable : global::System.Data.TypedTableBase<FilmRow> {
+        public partial class FilmsDataTable : global::System.Data.TypedTableBase<FilmsRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -634,8 +676,8 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmDataTable() {
-                this.TableName = "Film";
+            public FilmsDataTable() {
+                this.TableName = "Films";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -643,7 +685,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal FilmDataTable(global::System.Data.DataTable table) {
+            internal FilmsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -660,7 +702,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected FilmDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected FilmsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -772,38 +814,38 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow this[int index] {
+            public FilmsRow this[int index] {
                 get {
-                    return ((FilmRow)(this.Rows[index]));
+                    return ((FilmsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FilmRowChangeEventHandler FilmRowChanging;
+            public event FilmsRowChangeEventHandler FilmsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FilmRowChangeEventHandler FilmRowChanged;
+            public event FilmsRowChangeEventHandler FilmsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FilmRowChangeEventHandler FilmRowDeleting;
+            public event FilmsRowChangeEventHandler FilmsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FilmRowChangeEventHandler FilmRowDeleted;
+            public event FilmsRowChangeEventHandler FilmsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddFilmRow(FilmRow row) {
+            public void AddFilmsRow(FilmsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow AddFilmRow(string FilmName, CategoryRow parentCategoryRowByCategory_Film, int Year, DirectorRow parentDirectorRowByDirector_Film, CountryRow parentCountryRowByCountry_Film, byte[] Poster, string CodeFilm, RateRow parentRateRowByRate_Film, QualityRow parentQualityRowByQuality_Film, string Note, string Duration) {
-                FilmRow rowFilmRow = ((FilmRow)(this.NewRow()));
+            public FilmsRow AddFilmsRow(string FilmName, int Categ_id, int Year, DirectorRow parentDirectorRowByDirector_Film, CountryRow parentCountryRowByCountry_Film, byte[] Poster, string CodeFilm, RateRow parentRateRowByRate_Film, QualityRow parentQualityRowByQuality_Film, string Note, string Duration) {
+                FilmsRow rowFilmsRow = ((FilmsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         FilmName,
-                        null,
+                        Categ_id,
                         Year,
                         null,
                         null,
@@ -813,9 +855,6 @@ namespace FilmOffline.DataBase.Base {
                         null,
                         Note,
                         Duration};
-                if ((parentCategoryRowByCategory_Film != null)) {
-                    columnValuesArray[2] = parentCategoryRowByCategory_Film[0];
-                }
                 if ((parentDirectorRowByDirector_Film != null)) {
                     columnValuesArray[4] = parentDirectorRowByDirector_Film[0];
                 }
@@ -828,15 +867,15 @@ namespace FilmOffline.DataBase.Base {
                 if ((parentQualityRowByQuality_Film != null)) {
                     columnValuesArray[9] = parentQualityRowByQuality_Film[0];
                 }
-                rowFilmRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowFilmRow);
-                return rowFilmRow;
+                rowFilmsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFilmsRow);
+                return rowFilmsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                FilmDataTable cln = ((FilmDataTable)(base.Clone()));
+                FilmsDataTable cln = ((FilmsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -844,7 +883,7 @@ namespace FilmOffline.DataBase.Base {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new FilmDataTable();
+                return new FilmsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -902,28 +941,28 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow NewFilmRow() {
-                return ((FilmRow)(this.NewRow()));
+            public FilmsRow NewFilmsRow() {
+                return ((FilmsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new FilmRow(builder);
+                return new FilmsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(FilmRow);
+                return typeof(FilmsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.FilmRowChanged != null)) {
-                    this.FilmRowChanged(this, new FilmRowChangeEvent(((FilmRow)(e.Row)), e.Action));
+                if ((this.FilmsRowChanged != null)) {
+                    this.FilmsRowChanged(this, new FilmsRowChangeEvent(((FilmsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -931,8 +970,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.FilmRowChanging != null)) {
-                    this.FilmRowChanging(this, new FilmRowChangeEvent(((FilmRow)(e.Row)), e.Action));
+                if ((this.FilmsRowChanging != null)) {
+                    this.FilmsRowChanging(this, new FilmsRowChangeEvent(((FilmsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -940,8 +979,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.FilmRowDeleted != null)) {
-                    this.FilmRowDeleted(this, new FilmRowChangeEvent(((FilmRow)(e.Row)), e.Action));
+                if ((this.FilmsRowDeleted != null)) {
+                    this.FilmsRowDeleted(this, new FilmsRowChangeEvent(((FilmsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -949,14 +988,14 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.FilmRowDeleting != null)) {
-                    this.FilmRowDeleting(this, new FilmRowChangeEvent(((FilmRow)(e.Row)), e.Action));
+                if ((this.FilmsRowDeleting != null)) {
+                    this.FilmsRowDeleting(this, new FilmsRowChangeEvent(((FilmsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveFilmRow(FilmRow row) {
+            public void RemoveFilmsRow(FilmsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -983,7 +1022,7 @@ namespace FilmOffline.DataBase.Base {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "FilmDataTable";
+                attribute2.FixedValue = "FilmsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1311,7 +1350,7 @@ namespace FilmOffline.DataBase.Base {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CategoryDataTable : global::System.Data.TypedTableBase<CategoryRow> {
+        public partial class CategoriesDataTable : global::System.Data.TypedTableBase<CategoriesRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -1319,8 +1358,8 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryDataTable() {
-                this.TableName = "Category";
+            public CategoriesDataTable() {
+                this.TableName = "Categories";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1328,7 +1367,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CategoryDataTable(global::System.Data.DataTable table) {
+            internal CategoriesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1345,7 +1384,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected CategoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CategoriesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1377,46 +1416,46 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow this[int index] {
+            public CategoriesRow this[int index] {
                 get {
-                    return ((CategoryRow)(this.Rows[index]));
+                    return ((CategoriesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CategoryRowChangeEventHandler CategoryRowChanging;
+            public event CategoriesRowChangeEventHandler CategoriesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CategoryRowChangeEventHandler CategoryRowChanged;
+            public event CategoriesRowChangeEventHandler CategoriesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CategoryRowChangeEventHandler CategoryRowDeleting;
+            public event CategoriesRowChangeEventHandler CategoriesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CategoryRowChangeEventHandler CategoryRowDeleted;
+            public event CategoriesRowChangeEventHandler CategoriesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddCategoryRow(CategoryRow row) {
+            public void AddCategoriesRow(CategoriesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow AddCategoryRow(string CategoryName) {
-                CategoryRow rowCategoryRow = ((CategoryRow)(this.NewRow()));
+            public CategoriesRow AddCategoriesRow(string CategoryName) {
+                CategoriesRow rowCategoriesRow = ((CategoriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         CategoryName};
-                rowCategoryRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCategoryRow);
-                return rowCategoryRow;
+                rowCategoriesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCategoriesRow);
+                return rowCategoriesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                CategoryDataTable cln = ((CategoryDataTable)(base.Clone()));
+                CategoriesDataTable cln = ((CategoriesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1424,7 +1463,7 @@ namespace FilmOffline.DataBase.Base {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new CategoryDataTable();
+                return new CategoriesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1452,28 +1491,28 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow NewCategoryRow() {
-                return ((CategoryRow)(this.NewRow()));
+            public CategoriesRow NewCategoriesRow() {
+                return ((CategoriesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CategoryRow(builder);
+                return new CategoriesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(CategoryRow);
+                return typeof(CategoriesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.CategoryRowChanged != null)) {
-                    this.CategoryRowChanged(this, new CategoryRowChangeEvent(((CategoryRow)(e.Row)), e.Action));
+                if ((this.CategoriesRowChanged != null)) {
+                    this.CategoriesRowChanged(this, new CategoriesRowChangeEvent(((CategoriesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1481,8 +1520,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.CategoryRowChanging != null)) {
-                    this.CategoryRowChanging(this, new CategoryRowChangeEvent(((CategoryRow)(e.Row)), e.Action));
+                if ((this.CategoriesRowChanging != null)) {
+                    this.CategoriesRowChanging(this, new CategoriesRowChangeEvent(((CategoriesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1490,8 +1529,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.CategoryRowDeleted != null)) {
-                    this.CategoryRowDeleted(this, new CategoryRowChangeEvent(((CategoryRow)(e.Row)), e.Action));
+                if ((this.CategoriesRowDeleted != null)) {
+                    this.CategoriesRowDeleted(this, new CategoriesRowChangeEvent(((CategoriesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1499,14 +1538,14 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.CategoryRowDeleting != null)) {
-                    this.CategoryRowDeleting(this, new CategoryRowChangeEvent(((CategoryRow)(e.Row)), e.Action));
+                if ((this.CategoriesRowDeleting != null)) {
+                    this.CategoriesRowDeleting(this, new CategoriesRowChangeEvent(((CategoriesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveCategoryRow(CategoryRow row) {
+            public void RemoveCategoriesRow(CategoriesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1533,7 +1572,7 @@ namespace FilmOffline.DataBase.Base {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CategoryDataTable";
+                attribute2.FixedValue = "CategoriesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2383,16 +2422,16 @@ namespace FilmOffline.DataBase.Base {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GroupsDataTable : global::System.Data.TypedTableBase<GroupsRow> {
+        public partial class ActorsGroupDataTable : global::System.Data.TypedTableBase<ActorsGroupRow> {
             
-            private global::System.Data.DataColumn columnFilm_id;
+            private global::System.Data.DataColumn columnFilms_id;
             
             private global::System.Data.DataColumn columnActor_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsDataTable() {
-                this.TableName = "Groups";
+            public ActorsGroupDataTable() {
+                this.TableName = "ActorsGroup";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2400,7 +2439,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GroupsDataTable(global::System.Data.DataTable table) {
+            internal ActorsGroupDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2417,16 +2456,16 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected GroupsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ActorsGroupDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Film_idColumn {
+            public global::System.Data.DataColumn Films_idColumn {
                 get {
-                    return this.columnFilm_id;
+                    return this.columnFilms_id;
                 }
             }
             
@@ -2449,52 +2488,52 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow this[int index] {
+            public ActorsGroupRow this[int index] {
                 get {
-                    return ((GroupsRow)(this.Rows[index]));
+                    return ((ActorsGroupRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GroupsRowChangeEventHandler GroupsRowChanging;
+            public event ActorsGroupRowChangeEventHandler ActorsGroupRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GroupsRowChangeEventHandler GroupsRowChanged;
+            public event ActorsGroupRowChangeEventHandler ActorsGroupRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GroupsRowChangeEventHandler GroupsRowDeleting;
+            public event ActorsGroupRowChangeEventHandler ActorsGroupRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GroupsRowChangeEventHandler GroupsRowDeleted;
+            public event ActorsGroupRowChangeEventHandler ActorsGroupRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGroupsRow(GroupsRow row) {
+            public void AddActorsGroupRow(ActorsGroupRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow AddGroupsRow(FilmRow parentFilmRowByFilm_Groups, ActorRow parentActorRowByActor_Groups) {
-                GroupsRow rowGroupsRow = ((GroupsRow)(this.NewRow()));
+            public ActorsGroupRow AddActorsGroupRow(FilmsRow parentFilmsRowByFilm_Groups, ActorsRow parentActorsRowByActor_Groups) {
+                ActorsGroupRow rowActorsGroupRow = ((ActorsGroupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null};
-                if ((parentFilmRowByFilm_Groups != null)) {
-                    columnValuesArray[0] = parentFilmRowByFilm_Groups[0];
+                if ((parentFilmsRowByFilm_Groups != null)) {
+                    columnValuesArray[0] = parentFilmsRowByFilm_Groups[0];
                 }
-                if ((parentActorRowByActor_Groups != null)) {
-                    columnValuesArray[1] = parentActorRowByActor_Groups[0];
+                if ((parentActorsRowByActor_Groups != null)) {
+                    columnValuesArray[1] = parentActorsRowByActor_Groups[0];
                 }
-                rowGroupsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowGroupsRow);
-                return rowGroupsRow;
+                rowActorsGroupRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowActorsGroupRow);
+                return rowActorsGroupRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                GroupsDataTable cln = ((GroupsDataTable)(base.Clone()));
+                ActorsGroupDataTable cln = ((ActorsGroupDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2502,49 +2541,49 @@ namespace FilmOffline.DataBase.Base {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new GroupsDataTable();
+                return new ActorsGroupDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnFilm_id = base.Columns["Film_id"];
+                this.columnFilms_id = base.Columns["Films_id"];
                 this.columnActor_id = base.Columns["Actor_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnFilm_id = new global::System.Data.DataColumn("Film_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFilm_id);
+                this.columnFilms_id = new global::System.Data.DataColumn("Films_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFilms_id);
                 this.columnActor_id = new global::System.Data.DataColumn("Actor_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnActor_id);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow NewGroupsRow() {
-                return ((GroupsRow)(this.NewRow()));
+            public ActorsGroupRow NewActorsGroupRow() {
+                return ((ActorsGroupRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new GroupsRow(builder);
+                return new ActorsGroupRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(GroupsRow);
+                return typeof(ActorsGroupRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.GroupsRowChanged != null)) {
-                    this.GroupsRowChanged(this, new GroupsRowChangeEvent(((GroupsRow)(e.Row)), e.Action));
+                if ((this.ActorsGroupRowChanged != null)) {
+                    this.ActorsGroupRowChanged(this, new ActorsGroupRowChangeEvent(((ActorsGroupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2552,8 +2591,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.GroupsRowChanging != null)) {
-                    this.GroupsRowChanging(this, new GroupsRowChangeEvent(((GroupsRow)(e.Row)), e.Action));
+                if ((this.ActorsGroupRowChanging != null)) {
+                    this.ActorsGroupRowChanging(this, new ActorsGroupRowChangeEvent(((ActorsGroupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2561,8 +2600,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.GroupsRowDeleted != null)) {
-                    this.GroupsRowDeleted(this, new GroupsRowChangeEvent(((GroupsRow)(e.Row)), e.Action));
+                if ((this.ActorsGroupRowDeleted != null)) {
+                    this.ActorsGroupRowDeleted(this, new ActorsGroupRowChangeEvent(((ActorsGroupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2570,14 +2609,14 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.GroupsRowDeleting != null)) {
-                    this.GroupsRowDeleting(this, new GroupsRowChangeEvent(((GroupsRow)(e.Row)), e.Action));
+                if ((this.ActorsGroupRowDeleting != null)) {
+                    this.ActorsGroupRowDeleting(this, new ActorsGroupRowChangeEvent(((ActorsGroupRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGroupsRow(GroupsRow row) {
+            public void RemoveActorsGroupRow(ActorsGroupRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2604,7 +2643,7 @@ namespace FilmOffline.DataBase.Base {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "GroupsDataTable";
+                attribute2.FixedValue = "ActorsGroupDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2650,7 +2689,7 @@ namespace FilmOffline.DataBase.Base {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ActorDataTable : global::System.Data.TypedTableBase<ActorRow> {
+        public partial class ActorsDataTable : global::System.Data.TypedTableBase<ActorsRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -2658,8 +2697,8 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorDataTable() {
-                this.TableName = "Actor";
+            public ActorsDataTable() {
+                this.TableName = "Actors";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2667,7 +2706,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ActorDataTable(global::System.Data.DataTable table) {
+            internal ActorsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2684,7 +2723,7 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ActorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ActorsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2716,46 +2755,46 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRow this[int index] {
+            public ActorsRow this[int index] {
                 get {
-                    return ((ActorRow)(this.Rows[index]));
+                    return ((ActorsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ActorRowChangeEventHandler ActorRowChanging;
+            public event ActorsRowChangeEventHandler ActorsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ActorRowChangeEventHandler ActorRowChanged;
+            public event ActorsRowChangeEventHandler ActorsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ActorRowChangeEventHandler ActorRowDeleting;
+            public event ActorsRowChangeEventHandler ActorsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ActorRowChangeEventHandler ActorRowDeleted;
+            public event ActorsRowChangeEventHandler ActorsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddActorRow(ActorRow row) {
+            public void AddActorsRow(ActorsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRow AddActorRow(string ActorName) {
-                ActorRow rowActorRow = ((ActorRow)(this.NewRow()));
+            public ActorsRow AddActorsRow(string ActorName) {
+                ActorsRow rowActorsRow = ((ActorsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         ActorName};
-                rowActorRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowActorRow);
-                return rowActorRow;
+                rowActorsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowActorsRow);
+                return rowActorsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ActorDataTable cln = ((ActorDataTable)(base.Clone()));
+                ActorsDataTable cln = ((ActorsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2763,7 +2802,7 @@ namespace FilmOffline.DataBase.Base {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ActorDataTable();
+                return new ActorsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2791,28 +2830,28 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRow NewActorRow() {
-                return ((ActorRow)(this.NewRow()));
+            public ActorsRow NewActorsRow() {
+                return ((ActorsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ActorRow(builder);
+                return new ActorsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ActorRow);
+                return typeof(ActorsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ActorRowChanged != null)) {
-                    this.ActorRowChanged(this, new ActorRowChangeEvent(((ActorRow)(e.Row)), e.Action));
+                if ((this.ActorsRowChanged != null)) {
+                    this.ActorsRowChanged(this, new ActorsRowChangeEvent(((ActorsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2820,8 +2859,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ActorRowChanging != null)) {
-                    this.ActorRowChanging(this, new ActorRowChangeEvent(((ActorRow)(e.Row)), e.Action));
+                if ((this.ActorsRowChanging != null)) {
+                    this.ActorsRowChanging(this, new ActorsRowChangeEvent(((ActorsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2829,8 +2868,8 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ActorRowDeleted != null)) {
-                    this.ActorRowDeleted(this, new ActorRowChangeEvent(((ActorRow)(e.Row)), e.Action));
+                if ((this.ActorsRowDeleted != null)) {
+                    this.ActorsRowDeleted(this, new ActorsRowChangeEvent(((ActorsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2838,14 +2877,14 @@ namespace FilmOffline.DataBase.Base {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ActorRowDeleting != null)) {
-                    this.ActorRowDeleting(this, new ActorRowChangeEvent(((ActorRow)(e.Row)), e.Action));
+                if ((this.ActorsRowDeleting != null)) {
+                    this.ActorsRowDeleting(this, new ActorsRowChangeEvent(((ActorsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveActorRow(ActorRow row) {
+            public void RemoveActorsRow(ActorsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2872,7 +2911,7 @@ namespace FilmOffline.DataBase.Base {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ActorDataTable";
+                attribute2.FixedValue = "ActorsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3179,17 +3218,281 @@ namespace FilmOffline.DataBase.Base {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Represents the strongly named DataTable class.
         ///</summary>
-        public partial class FilmRow : global::System.Data.DataRow {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CategoryGroupDataTable : global::System.Data.TypedTableBase<CategoryGroupRow> {
             
-            private FilmDataTable tableFilm;
+            private global::System.Data.DataColumn columnFilm_id;
+            
+            private global::System.Data.DataColumn columnCategory_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal FilmRow(global::System.Data.DataRowBuilder rb) : 
+            public CategoryGroupDataTable() {
+                this.TableName = "CategoryGroup";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CategoryGroupDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected CategoryGroupDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Film_idColumn {
+                get {
+                    return this.columnFilm_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Category_idColumn {
+                get {
+                    return this.columnCategory_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRow this[int index] {
+                get {
+                    return ((CategoryGroupRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CategoryGroupRowChangeEventHandler CategoryGroupRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CategoryGroupRowChangeEventHandler CategoryGroupRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CategoryGroupRowChangeEventHandler CategoryGroupRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CategoryGroupRowChangeEventHandler CategoryGroupRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddCategoryGroupRow(CategoryGroupRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRow AddCategoryGroupRow(int Film_id, CategoriesRow parentCategoriesRowByCategories_CategoryGroup) {
+                CategoryGroupRow rowCategoryGroupRow = ((CategoryGroupRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Film_id,
+                        null};
+                if ((parentCategoriesRowByCategories_CategoryGroup != null)) {
+                    columnValuesArray[1] = parentCategoriesRowByCategories_CategoryGroup[0];
+                }
+                rowCategoryGroupRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCategoryGroupRow);
+                return rowCategoryGroupRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CategoryGroupDataTable cln = ((CategoryGroupDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CategoryGroupDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnFilm_id = base.Columns["Film_id"];
+                this.columnCategory_id = base.Columns["Category_id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnFilm_id = new global::System.Data.DataColumn("Film_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFilm_id);
+                this.columnCategory_id = new global::System.Data.DataColumn("Category_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCategory_id);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRow NewCategoryGroupRow() {
+                return ((CategoryGroupRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CategoryGroupRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CategoryGroupRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CategoryGroupRowChanged != null)) {
+                    this.CategoryGroupRowChanged(this, new CategoryGroupRowChangeEvent(((CategoryGroupRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CategoryGroupRowChanging != null)) {
+                    this.CategoryGroupRowChanging(this, new CategoryGroupRowChangeEvent(((CategoryGroupRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CategoryGroupRowDeleted != null)) {
+                    this.CategoryGroupRowDeleted(this, new CategoryGroupRowChangeEvent(((CategoryGroupRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CategoryGroupRowDeleting != null)) {
+                    this.CategoryGroupRowDeleting(this, new CategoryGroupRowChangeEvent(((CategoryGroupRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveCategoryGroupRow(CategoryGroupRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                LocalFilmData ds = new LocalFilmData();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CategoryGroupDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class FilmsRow : global::System.Data.DataRow {
+            
+            private FilmsDataTable tableFilms;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal FilmsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableFilm = ((FilmDataTable)(this.Table));
+                this.tableFilms = ((FilmsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3197,14 +3500,14 @@ namespace FilmOffline.DataBase.Base {
             public int id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.idColumn]));
+                        return ((int)(this[this.tableFilms.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.idColumn] = value;
+                    this[this.tableFilms.idColumn] = value;
                 }
             }
             
@@ -3213,14 +3516,14 @@ namespace FilmOffline.DataBase.Base {
             public string FilmName {
                 get {
                     try {
-                        return ((string)(this[this.tableFilm.FilmNameColumn]));
+                        return ((string)(this[this.tableFilms.FilmNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FilmName\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FilmName\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.FilmNameColumn] = value;
+                    this[this.tableFilms.FilmNameColumn] = value;
                 }
             }
             
@@ -3229,14 +3532,14 @@ namespace FilmOffline.DataBase.Base {
             public int Categ_id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.Categ_idColumn]));
+                        return ((int)(this[this.tableFilms.Categ_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Categ_id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Categ_id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.Categ_idColumn] = value;
+                    this[this.tableFilms.Categ_idColumn] = value;
                 }
             }
             
@@ -3245,14 +3548,14 @@ namespace FilmOffline.DataBase.Base {
             public int Year {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.YearColumn]));
+                        return ((int)(this[this.tableFilms.YearColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Year\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Year\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.YearColumn] = value;
+                    this[this.tableFilms.YearColumn] = value;
                 }
             }
             
@@ -3261,14 +3564,14 @@ namespace FilmOffline.DataBase.Base {
             public int Director_id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.Director_idColumn]));
+                        return ((int)(this[this.tableFilms.Director_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Director_id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Director_id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.Director_idColumn] = value;
+                    this[this.tableFilms.Director_idColumn] = value;
                 }
             }
             
@@ -3277,14 +3580,14 @@ namespace FilmOffline.DataBase.Base {
             public int Country_id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.Country_idColumn]));
+                        return ((int)(this[this.tableFilms.Country_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Country_id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Country_id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.Country_idColumn] = value;
+                    this[this.tableFilms.Country_idColumn] = value;
                 }
             }
             
@@ -3293,14 +3596,14 @@ namespace FilmOffline.DataBase.Base {
             public byte[] Poster {
                 get {
                     try {
-                        return ((byte[])(this[this.tableFilm.PosterColumn]));
+                        return ((byte[])(this[this.tableFilms.PosterColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Poster\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Poster\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.PosterColumn] = value;
+                    this[this.tableFilms.PosterColumn] = value;
                 }
             }
             
@@ -3309,14 +3612,14 @@ namespace FilmOffline.DataBase.Base {
             public string CodeFilm {
                 get {
                     try {
-                        return ((string)(this[this.tableFilm.CodeFilmColumn]));
+                        return ((string)(this[this.tableFilms.CodeFilmColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CodeFilm\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodeFilm\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.CodeFilmColumn] = value;
+                    this[this.tableFilms.CodeFilmColumn] = value;
                 }
             }
             
@@ -3325,14 +3628,14 @@ namespace FilmOffline.DataBase.Base {
             public int Rate_id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.Rate_idColumn]));
+                        return ((int)(this[this.tableFilms.Rate_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Rate_id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Rate_id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.Rate_idColumn] = value;
+                    this[this.tableFilms.Rate_idColumn] = value;
                 }
             }
             
@@ -3341,14 +3644,14 @@ namespace FilmOffline.DataBase.Base {
             public int Quality_id {
                 get {
                     try {
-                        return ((int)(this[this.tableFilm.Quality_idColumn]));
+                        return ((int)(this[this.tableFilms.Quality_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quality_id\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quality_id\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.Quality_idColumn] = value;
+                    this[this.tableFilms.Quality_idColumn] = value;
                 }
             }
             
@@ -3357,14 +3660,14 @@ namespace FilmOffline.DataBase.Base {
             public string Note {
                 get {
                     try {
-                        return ((string)(this[this.tableFilm.NoteColumn]));
+                        return ((string)(this[this.tableFilms.NoteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Note\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Note\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.NoteColumn] = value;
+                    this[this.tableFilms.NoteColumn] = value;
                 }
             }
             
@@ -3373,25 +3676,14 @@ namespace FilmOffline.DataBase.Base {
             public string Duration {
                 get {
                     try {
-                        return ((string)(this[this.tableFilm.DurationColumn]));
+                        return ((string)(this[this.tableFilms.DurationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'Film\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'Films\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFilm.DurationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow CategoryRow {
-                get {
-                    return ((CategoryRow)(this.GetParentRow(this.Table.ParentRelations["Category_Film"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Category_Film"]);
+                    this[this.tableFilms.DurationColumn] = value;
                 }
             }
             
@@ -3441,156 +3733,167 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRow CategoryGroupRow {
+                get {
+                    return ((CategoryGroupRow)(this.GetParentRow(this.Table.ParentRelations["CategoryGroup_Film"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["CategoryGroup_Film"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsidNull() {
-                return this.IsNull(this.tableFilm.idColumn);
+                return this.IsNull(this.tableFilms.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetidNull() {
-                this[this.tableFilm.idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFilmNameNull() {
-                return this.IsNull(this.tableFilm.FilmNameColumn);
+                return this.IsNull(this.tableFilms.FilmNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFilmNameNull() {
-                this[this.tableFilm.FilmNameColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.FilmNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCateg_idNull() {
-                return this.IsNull(this.tableFilm.Categ_idColumn);
+                return this.IsNull(this.tableFilms.Categ_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCateg_idNull() {
-                this[this.tableFilm.Categ_idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.Categ_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsYearNull() {
-                return this.IsNull(this.tableFilm.YearColumn);
+                return this.IsNull(this.tableFilms.YearColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetYearNull() {
-                this[this.tableFilm.YearColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.YearColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDirector_idNull() {
-                return this.IsNull(this.tableFilm.Director_idColumn);
+                return this.IsNull(this.tableFilms.Director_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDirector_idNull() {
-                this[this.tableFilm.Director_idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.Director_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCountry_idNull() {
-                return this.IsNull(this.tableFilm.Country_idColumn);
+                return this.IsNull(this.tableFilms.Country_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCountry_idNull() {
-                this[this.tableFilm.Country_idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.Country_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPosterNull() {
-                return this.IsNull(this.tableFilm.PosterColumn);
+                return this.IsNull(this.tableFilms.PosterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPosterNull() {
-                this[this.tableFilm.PosterColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.PosterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCodeFilmNull() {
-                return this.IsNull(this.tableFilm.CodeFilmColumn);
+                return this.IsNull(this.tableFilms.CodeFilmColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodeFilmNull() {
-                this[this.tableFilm.CodeFilmColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.CodeFilmColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRate_idNull() {
-                return this.IsNull(this.tableFilm.Rate_idColumn);
+                return this.IsNull(this.tableFilms.Rate_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRate_idNull() {
-                this[this.tableFilm.Rate_idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.Rate_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsQuality_idNull() {
-                return this.IsNull(this.tableFilm.Quality_idColumn);
+                return this.IsNull(this.tableFilms.Quality_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuality_idNull() {
-                this[this.tableFilm.Quality_idColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.Quality_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNoteNull() {
-                return this.IsNull(this.tableFilm.NoteColumn);
+                return this.IsNull(this.tableFilms.NoteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNoteNull() {
-                this[this.tableFilm.NoteColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.NoteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDurationNull() {
-                return this.IsNull(this.tableFilm.DurationColumn);
+                return this.IsNull(this.tableFilms.DurationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDurationNull() {
-                this[this.tableFilm.DurationColumn] = global::System.Convert.DBNull;
+                this[this.tableFilms.DurationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow[] GetGroupsRows() {
+            public ActorsGroupRow[] GetActorsGroupRows() {
                 if ((this.Table.ChildRelations["Film_Groups"] == null)) {
-                    return new GroupsRow[0];
+                    return new ActorsGroupRow[0];
                 }
                 else {
-                    return ((GroupsRow[])(base.GetChildRows(this.Table.ChildRelations["Film_Groups"])));
+                    return ((ActorsGroupRow[])(base.GetChildRows(this.Table.ChildRelations["Film_Groups"])));
                 }
             }
         }
@@ -3697,15 +4000,15 @@ namespace FilmOffline.DataBase.Base {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CategoryRow : global::System.Data.DataRow {
+        public partial class CategoriesRow : global::System.Data.DataRow {
             
-            private CategoryDataTable tableCategory;
+            private CategoriesDataTable tableCategories;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CategoryRow(global::System.Data.DataRowBuilder rb) : 
+            internal CategoriesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCategory = ((CategoryDataTable)(this.Table));
+                this.tableCategories = ((CategoriesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3713,14 +4016,14 @@ namespace FilmOffline.DataBase.Base {
             public int id {
                 get {
                     try {
-                        return ((int)(this[this.tableCategory.idColumn]));
+                        return ((int)(this[this.tableCategories.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Category\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Categories\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCategory.idColumn] = value;
+                    this[this.tableCategories.idColumn] = value;
                 }
             }
             
@@ -3729,49 +4032,49 @@ namespace FilmOffline.DataBase.Base {
             public string CategoryName {
                 get {
                     try {
-                        return ((string)(this[this.tableCategory.CategoryNameColumn]));
+                        return ((string)(this[this.tableCategories.CategoryNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryName\' in table \'Category\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryName\' in table \'Categories\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCategory.CategoryNameColumn] = value;
+                    this[this.tableCategories.CategoryNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsidNull() {
-                return this.IsNull(this.tableCategory.idColumn);
+                return this.IsNull(this.tableCategories.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetidNull() {
-                this[this.tableCategory.idColumn] = global::System.Convert.DBNull;
+                this[this.tableCategories.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCategoryNameNull() {
-                return this.IsNull(this.tableCategory.CategoryNameColumn);
+                return this.IsNull(this.tableCategories.CategoryNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCategoryNameNull() {
-                this[this.tableCategory.CategoryNameColumn] = global::System.Convert.DBNull;
+                this[this.tableCategories.CategoryNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow[] GetFilmRows() {
-                if ((this.Table.ChildRelations["Category_Film"] == null)) {
-                    return new FilmRow[0];
+            public CategoryGroupRow[] GetCategoryGroupRows() {
+                if ((this.Table.ChildRelations["Categories_CategoryGroup"] == null)) {
+                    return new CategoryGroupRow[0];
                 }
                 else {
-                    return ((FilmRow[])(base.GetChildRows(this.Table.ChildRelations["Category_Film"])));
+                    return ((CategoryGroupRow[])(base.GetChildRows(this.Table.ChildRelations["Categories_CategoryGroup"])));
                 }
             }
         }
@@ -3848,12 +4151,12 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow[] GetFilmRows() {
+            public FilmsRow[] GetFilmRows() {
                 if ((this.Table.ChildRelations["Director_Film"] == null)) {
-                    return new FilmRow[0];
+                    return new FilmsRow[0];
                 }
                 else {
-                    return ((FilmRow[])(base.GetChildRows(this.Table.ChildRelations["Director_Film"])));
+                    return ((FilmsRow[])(base.GetChildRows(this.Table.ChildRelations["Director_Film"])));
                 }
             }
         }
@@ -3930,12 +4233,12 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow[] GetFilmRows() {
+            public FilmsRow[] GetFilmRows() {
                 if ((this.Table.ChildRelations["Country_Film"] == null)) {
-                    return new FilmRow[0];
+                    return new FilmsRow[0];
                 }
                 else {
-                    return ((FilmRow[])(base.GetChildRows(this.Table.ChildRelations["Country_Film"])));
+                    return ((FilmsRow[])(base.GetChildRows(this.Table.ChildRelations["Country_Film"])));
                 }
             }
         }
@@ -4012,12 +4315,12 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow[] GetFilmRows() {
+            public FilmsRow[] GetFilmRows() {
                 if ((this.Table.ChildRelations["Rate_Film"] == null)) {
-                    return new FilmRow[0];
+                    return new FilmsRow[0];
                 }
                 else {
-                    return ((FilmRow[])(base.GetChildRows(this.Table.ChildRelations["Rate_Film"])));
+                    return ((FilmsRow[])(base.GetChildRows(this.Table.ChildRelations["Rate_Film"])));
                 }
             }
         }
@@ -4025,30 +4328,30 @@ namespace FilmOffline.DataBase.Base {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GroupsRow : global::System.Data.DataRow {
+        public partial class ActorsGroupRow : global::System.Data.DataRow {
             
-            private GroupsDataTable tableGroups;
+            private ActorsGroupDataTable tableActorsGroup;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GroupsRow(global::System.Data.DataRowBuilder rb) : 
+            internal ActorsGroupRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableGroups = ((GroupsDataTable)(this.Table));
+                this.tableActorsGroup = ((ActorsGroupDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Film_id {
+            public int Films_id {
                 get {
                     try {
-                        return ((int)(this[this.tableGroups.Film_idColumn]));
+                        return ((int)(this[this.tableActorsGroup.Films_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Film_id\' in table \'Groups\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Films_id\' in table \'ActorsGroup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGroups.Film_idColumn] = value;
+                    this[this.tableActorsGroup.Films_idColumn] = value;
                 }
             }
             
@@ -4057,22 +4360,22 @@ namespace FilmOffline.DataBase.Base {
             public int Actor_id {
                 get {
                     try {
-                        return ((int)(this[this.tableGroups.Actor_idColumn]));
+                        return ((int)(this[this.tableActorsGroup.Actor_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Actor_id\' in table \'Groups\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Actor_id\' in table \'ActorsGroup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGroups.Actor_idColumn] = value;
+                    this[this.tableActorsGroup.Actor_idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRow ActorRow {
+            public ActorsRow ActorsRow {
                 get {
-                    return ((ActorRow)(this.GetParentRow(this.Table.ParentRelations["Actor_Groups"])));
+                    return ((ActorsRow)(this.GetParentRow(this.Table.ParentRelations["Actor_Groups"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Actor_Groups"]);
@@ -4081,9 +4384,9 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow FilmRow {
+            public FilmsRow FilmRow {
                 get {
-                    return ((FilmRow)(this.GetParentRow(this.Table.ParentRelations["Film_Groups"])));
+                    return ((FilmsRow)(this.GetParentRow(this.Table.ParentRelations["Film_Groups"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Film_Groups"]);
@@ -4092,41 +4395,41 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFilm_idNull() {
-                return this.IsNull(this.tableGroups.Film_idColumn);
+            public bool IsFilms_idNull() {
+                return this.IsNull(this.tableActorsGroup.Films_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFilm_idNull() {
-                this[this.tableGroups.Film_idColumn] = global::System.Convert.DBNull;
+            public void SetFilms_idNull() {
+                this[this.tableActorsGroup.Films_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsActor_idNull() {
-                return this.IsNull(this.tableGroups.Actor_idColumn);
+                return this.IsNull(this.tableActorsGroup.Actor_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetActor_idNull() {
-                this[this.tableGroups.Actor_idColumn] = global::System.Convert.DBNull;
+                this[this.tableActorsGroup.Actor_idColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ActorRow : global::System.Data.DataRow {
+        public partial class ActorsRow : global::System.Data.DataRow {
             
-            private ActorDataTable tableActor;
+            private ActorsDataTable tableActors;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ActorRow(global::System.Data.DataRowBuilder rb) : 
+            internal ActorsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableActor = ((ActorDataTable)(this.Table));
+                this.tableActors = ((ActorsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4134,14 +4437,14 @@ namespace FilmOffline.DataBase.Base {
             public int id {
                 get {
                     try {
-                        return ((int)(this[this.tableActor.idColumn]));
+                        return ((int)(this[this.tableActors.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Actor\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Actors\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableActor.idColumn] = value;
+                    this[this.tableActors.idColumn] = value;
                 }
             }
             
@@ -4150,49 +4453,49 @@ namespace FilmOffline.DataBase.Base {
             public string ActorName {
                 get {
                     try {
-                        return ((string)(this[this.tableActor.ActorNameColumn]));
+                        return ((string)(this[this.tableActors.ActorNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ActorName\' in table \'Actor\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ActorName\' in table \'Actors\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableActor.ActorNameColumn] = value;
+                    this[this.tableActors.ActorNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsidNull() {
-                return this.IsNull(this.tableActor.idColumn);
+                return this.IsNull(this.tableActors.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetidNull() {
-                this[this.tableActor.idColumn] = global::System.Convert.DBNull;
+                this[this.tableActors.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsActorNameNull() {
-                return this.IsNull(this.tableActor.ActorNameColumn);
+                return this.IsNull(this.tableActors.ActorNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetActorNameNull() {
-                this[this.tableActor.ActorNameColumn] = global::System.Convert.DBNull;
+                this[this.tableActors.ActorNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow[] GetGroupsRows() {
+            public ActorsGroupRow[] GetGroupsRows() {
                 if ((this.Table.ChildRelations["Actor_Groups"] == null)) {
-                    return new GroupsRow[0];
+                    return new ActorsGroupRow[0];
                 }
                 else {
-                    return ((GroupsRow[])(base.GetChildRows(this.Table.ChildRelations["Actor_Groups"])));
+                    return ((ActorsGroupRow[])(base.GetChildRows(this.Table.ChildRelations["Actor_Groups"])));
                 }
             }
         }
@@ -4269,12 +4572,105 @@ namespace FilmOffline.DataBase.Base {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow[] GetFilmRows() {
+            public FilmsRow[] GetFilmRows() {
                 if ((this.Table.ChildRelations["Quality_Film"] == null)) {
-                    return new FilmRow[0];
+                    return new FilmsRow[0];
                 }
                 else {
-                    return ((FilmRow[])(base.GetChildRows(this.Table.ChildRelations["Quality_Film"])));
+                    return ((FilmsRow[])(base.GetChildRows(this.Table.ChildRelations["Quality_Film"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CategoryGroupRow : global::System.Data.DataRow {
+            
+            private CategoryGroupDataTable tableCategoryGroup;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CategoryGroupRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCategoryGroup = ((CategoryGroupDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Film_id {
+                get {
+                    try {
+                        return ((int)(this[this.tableCategoryGroup.Film_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Film_id\' in table \'CategoryGroup\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCategoryGroup.Film_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Category_id {
+                get {
+                    try {
+                        return ((int)(this[this.tableCategoryGroup.Category_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Category_id\' in table \'CategoryGroup\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCategoryGroup.Category_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoriesRow CategoriesRow {
+                get {
+                    return ((CategoriesRow)(this.GetParentRow(this.Table.ParentRelations["Categories_CategoryGroup"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Categories_CategoryGroup"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFilm_idNull() {
+                return this.IsNull(this.tableCategoryGroup.Film_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFilm_idNull() {
+                this[this.tableCategoryGroup.Film_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCategory_idNull() {
+                return this.IsNull(this.tableCategoryGroup.Category_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCategory_idNull() {
+                this[this.tableCategoryGroup.Category_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FilmsRow[] GetFilmsRows() {
+                if ((this.Table.ChildRelations["CategoryGroup_Film"] == null)) {
+                    return new FilmsRow[0];
+                }
+                else {
+                    return ((FilmsRow[])(base.GetChildRows(this.Table.ChildRelations["CategoryGroup_Film"])));
                 }
             }
         }
@@ -4283,22 +4679,22 @@ namespace FilmOffline.DataBase.Base {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class FilmRowChangeEvent : global::System.EventArgs {
+        public class FilmsRowChangeEvent : global::System.EventArgs {
             
-            private FilmRow eventRow;
+            private FilmsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRowChangeEvent(FilmRow row, global::System.Data.DataRowAction action) {
+            public FilmsRowChangeEvent(FilmsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FilmRow Row {
+            public FilmsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4351,22 +4747,22 @@ namespace FilmOffline.DataBase.Base {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class CategoryRowChangeEvent : global::System.EventArgs {
+        public class CategoriesRowChangeEvent : global::System.EventArgs {
             
-            private CategoryRow eventRow;
+            private CategoriesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRowChangeEvent(CategoryRow row, global::System.Data.DataRowAction action) {
+            public CategoriesRowChangeEvent(CategoriesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow Row {
+            public CategoriesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4487,22 +4883,22 @@ namespace FilmOffline.DataBase.Base {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GroupsRowChangeEvent : global::System.EventArgs {
+        public class ActorsGroupRowChangeEvent : global::System.EventArgs {
             
-            private GroupsRow eventRow;
+            private ActorsGroupRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRowChangeEvent(GroupsRow row, global::System.Data.DataRowAction action) {
+            public ActorsGroupRowChangeEvent(ActorsGroupRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow Row {
+            public ActorsGroupRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4521,22 +4917,22 @@ namespace FilmOffline.DataBase.Base {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ActorRowChangeEvent : global::System.EventArgs {
+        public class ActorsRowChangeEvent : global::System.EventArgs {
             
-            private ActorRow eventRow;
+            private ActorsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRowChangeEvent(ActorRow row, global::System.Data.DataRowAction action) {
+            public ActorsRowChangeEvent(ActorsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ActorRow Row {
+            public ActorsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4571,6 +4967,40 @@ namespace FilmOffline.DataBase.Base {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QualityRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class CategoryGroupRowChangeEvent : global::System.EventArgs {
+            
+            private CategoryGroupRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRowChangeEvent(CategoryGroupRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryGroupRow Row {
                 get {
                     return this.eventRow;
                 }

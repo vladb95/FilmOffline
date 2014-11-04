@@ -1,8 +1,11 @@
-D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.exe.config
 D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.csprojResolveAssemblyReference.cache
-D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.exe
 D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.pdb
-D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.exe
 D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.pdb
-D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.BL.exe
-D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.BL.pdb
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\Base\LocalFilmData.cs
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\Base\LocalFilmData.Designer.cs
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\Base\LocalFilmData.xsc
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\Base\LocalFilmData.xsd
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\Base\LocalFilmData.xss
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.dll.config
+D:\projects\FilmOffline\FilmOffline.DataBase\bin\Debug\FilmOffline.DataBase.dll
+D:\projects\FilmOffline\FilmOffline.DataBase\obj\Debug\FilmOffline.DataBase.dll

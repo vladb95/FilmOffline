@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using FilmOffline.DataBase.Providers.Interfaces;
-using FilmOffline.BL.Config;
 
 
 namespace FilmOffline.DataBase.Providers
 {
-    class LogProvider:MainProvider,ILogProvider<List<string>>
+    public class LogProvider:MainProvider,ILogProvider<List<string>>
     {
         public List<string> GetLogs()
         {

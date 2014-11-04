@@ -11,7 +11,8 @@ namespace FilmOffline.BL.Config
         Director,
         Rate,
         Country,
-        UserPost
+        UserPost,
+        All
     }
 
 }

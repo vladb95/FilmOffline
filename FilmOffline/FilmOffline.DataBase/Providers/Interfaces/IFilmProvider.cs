@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FilmOffline.DataBase.Base;
-using FilmOffline.BL.Config;
+using FilmOffline.DataBase.Misc;
 using System;
 
 namespace FilmOffline.DataBase.Providers.Interfaces
@@ -10,6 +10,6 @@ namespace FilmOffline.DataBase.Providers.Interfaces
     {
         void AddFilm(Film filmToAdd);
         T GetAllFilms();
-        T GetFilms(Func<T> func);
+        T GetFilms(Func<LocalFilmData,T> func);
     }
 }

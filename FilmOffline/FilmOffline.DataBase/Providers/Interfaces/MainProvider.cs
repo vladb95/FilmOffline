@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FilmOffline
 {
-    class MainProvider
+    public class MainProvider
     {
         protected LocalFilmData _dataBase;
 

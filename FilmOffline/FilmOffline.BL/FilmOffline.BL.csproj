@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{687F3A79-7AF5-4D41-B836-3B0C6AAC6D65}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FilmOffline.BL</RootNamespace>
     <AssemblyName>FilmOffline.BL</AssemblyName>
@@ -31,18 +31,34 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="Config\Film.cs" />
+    <ProjectReference Include="..\FilmOffline.DataBase\FilmOffline.DataBase.csproj">
+      <Project>{eca4b9d5-c5fa-4625-98cf-627992c7c2cb}</Project>
+      <Name>FilmOffline.DataBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Brain\Parser\CatParser.cs" />
+    <Compile Include="Brain\Parser\ConParser.cs" />
+    <Compile Include="Brain\Starter.cs" />
+    <Compile Include="Brain\UserRequest.cs" />
     <Compile Include="Config\Request.cs" />
     <Compile Include="Config\RequestType.cs" />
-    <Compile Include="Programm.cs" />
+    <Compile Include="Config\UserConfig.cs" />
+    <Compile Include="Periphery\Log.cs" />
+    <Compile Include="Periphery\Out.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="xNet">
+      <HintPath>..\..\xNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

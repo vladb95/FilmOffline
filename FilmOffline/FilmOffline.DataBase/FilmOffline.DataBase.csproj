@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ECA4B9D5-C5FA-4625-98CF-627992C7C2CB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FilmOffline.DataBase</RootNamespace>
     <AssemblyName>FilmOffline.DataBase</AssemblyName>
@@ -31,23 +31,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Base\LocalFilmData.xsc">
       <DependentUpon>LocalFilmData.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Base\LocalFilmData.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>LocalFilmData.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Base\LocalFilmData.xss">
       <DependentUpon>LocalFilmData.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -55,25 +63,21 @@
     <Compile Include="Base\LocalFilmData.cs">
       <DependentUpon>LocalFilmData.xsd</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Base\LocalFilmData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalFilmData.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Programm.cs" />
+    <Compile Include="Misc\Film.cs" />
     <Compile Include="Providers\FilmProvider.cs" />
-    <Compile Include="Providers\IFormatProvider.cs" />
     <Compile Include="Providers\Interfaces\IFilmProvider.cs" />
     <Compile Include="Providers\Interfaces\ILogProvider.cs" />
     <Compile Include="Providers\Interfaces\MainProvider.cs" />
+    <Compile Include="Providers\LocalFilmDataBase.cs" />
     <Compile Include="Providers\LogProvider.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FilmOffline.BL\FilmOffline.BL.csproj">
-      <Project>{687f3a79-7af5-4d41-b836-3b0c6aac6d65}</Project>
-      <Name>FilmOffline.BL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
