@@ -9,7 +9,7 @@ using xNet.Text;
 
 namespace FilmOffline.BL.Brain.Parser
 {
-    class CatParser
+    class ConcreteParser
     {
         Film _dataFilm;
         string _linkToFilm;
@@ -28,7 +28,7 @@ namespace FilmOffline.BL.Brain.Parser
             set { _linkToFilm = value; }
         }
 
-        public CatParser(string linkToFilm)
+        public ConcreteParser(string linkToFilm)
         {
             _dataFilm = new Film();
             _linkToFilm = linkToFilm;
@@ -59,11 +59,12 @@ namespace FilmOffline.BL.Brain.Parser
                 _dataFilm.Director = inputText.Substring("Режиссер:</b> ", "<br"); 
                 _dataFilm.Duration = inputText.Substring("Продолжительность:</b> ", "<br");
                 _dataFilm.Quality = inputText.Substring("Качество:</b> ", "<br");
-                _dataFilm.Year = Convert.ToInt32(inputText.Substring("Год выпуска:</b> ", "<br"));
+                _dataFilm.Year = int.Parse(inputText.Substring("Год выпуска:</b> ", "<br"));
                 _dataFilm.Rate = inputText.Substring("current-rating\" style=\"width:", "</li").Split('>')[1];
                 _dataFilm.Note = inputText.Substring("<!--TEnd-->", "<br /><br /><b>");
                 _dataFilm.Poster = new WebClient().DownloadData(inputText.Substring("<!--TBegin:", "|left-->"));
-                _dataFilm.Actors = inputText.Substring("В ролях:</b> ", "</div>").Split(new []{", "}, StringSplitOptions.RemoveEmptyEntries);
+                _dataFilm.Actors = inputText.Substring("В ролях:</b> ", "</div>").
+                    Split(new []{", "}, StringSplitOptions.RemoveEmptyEntries);
                 _dataFilm.Category = Regex.Replace(inputText.Substring("Жанр:</b> ", "<b>Качество:"), @"<[^>]+?>", "")
                     .Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
                 _dataFilm.CodeFilm = Encoding.UTF8.GetString(Convert.FromBase64String(inputText.Substring("decode('", "')")));

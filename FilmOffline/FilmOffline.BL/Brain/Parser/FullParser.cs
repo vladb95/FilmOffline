@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FilmOffline.BL.Brain.Parser
 {
-    class ConParser
+    class FullParser
     {
 
     }
