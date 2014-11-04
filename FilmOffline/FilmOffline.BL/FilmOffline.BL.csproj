@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{687F3A79-7AF5-4D41-B836-3B0C6AAC6D65}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FilmOffline.BL</RootNamespace>
     <AssemblyName>FilmOffline.BL</AssemblyName>
@@ -57,7 +57,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="xNet">
-      <HintPath>..\..\xNet.dll</HintPath>
+      <HintPath>C:\Users\Li\Desktop\xNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

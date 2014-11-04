@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using FilmOffline.DataBase.Misc;
 using System.Text;
 using xNet.Net;
@@ -48,12 +51,22 @@ namespace FilmOffline.BL.Brain.Parser
             }
         }
 
-        void RespnseParse(string inputText)
+        void ResponseParse(string inputText)
         {
             try
             {
-                //_dataFilm= 
-                return;
+                _dataFilm.FilmName = inputText.Substring("<h1> ", " (");
+                _dataFilm.Director = inputText.Substring("Режиссер:</b> ", "<br"); 
+                _dataFilm.Duration = inputText.Substring("Продолжительность:</b> ", "<br");
+                _dataFilm.Quality = inputText.Substring("Качество:</b> ", "<br");
+                _dataFilm.Year = Convert.ToInt32(inputText.Substring("Год выпуска:</b> ", "<br"));
+                _dataFilm.Rate = inputText.Substring("current-rating\" style=\"width:", "</li").Split('>')[1];
+                _dataFilm.Note = inputText.Substring("<!--TEnd-->", "<br /><br /><b>");
+                _dataFilm.Poster = new WebClient().DownloadData(inputText.Substring("<!--TBegin:", "|left-->"));
+                _dataFilm.Actors = inputText.Substring("В ролях:</b> ", "</div>").Split(new []{", "}, StringSplitOptions.RemoveEmptyEntries);
+                _dataFilm.Category = Regex.Replace(inputText.Substring("Жанр:</b> ", "<b>Качество:"), @"<[^>]+?>", "")
+                    .Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
+                _dataFilm.CodeFilm = Encoding.UTF8.GetString(Convert.FromBase64String(inputText.Substring("decode('", "')")));
             }
             catch { }
         }
